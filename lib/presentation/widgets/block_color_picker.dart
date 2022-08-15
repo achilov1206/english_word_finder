@@ -1,18 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
-const List<Color> colors = [
-  Colors.red,
-  Colors.pink,
-  Colors.purple,
-  Colors.deepPurple,
-  Colors.indigo,
-  Colors.blue,
-  Colors.lightBlue,
-  Colors.cyan,
-  Colors.teal,
-  Colors.green,
-];
+import '../../bloc/theme/theme_cubit.dart';
+
+import '../../theme/main_theme.dart';
 
 class BlockColorPickerWidget extends StatefulWidget {
   const BlockColorPickerWidget({
@@ -95,8 +87,14 @@ class _BlockColorPickerWidgetState extends State<BlockColorPickerWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        TextButton(
-          onPressed: () {
+        const Text(
+          'Change app Theme color',
+          style: TextStyle(
+            color: Colors.black,
+          ),
+        ),
+        GestureDetector(
+          onTap: () {
             showDialog(
               context: context,
               builder: (BuildContext context) {
@@ -105,8 +103,14 @@ class _BlockColorPickerWidgetState extends State<BlockColorPickerWidget> {
                   content: SingleChildScrollView(
                     child: BlockPicker(
                       pickerColor: Theme.of(context).primaryColor,
-                      onColorChanged: (color) {},
-                      availableColors: colors,
+                      onColorChanged: (color) {
+                        print(color);
+                        print(MyTheme.colorToThemeName(color));
+                        context.read<ThemeCubit>().changeTheme(
+                              MyTheme.colorToThemeName(color),
+                            );
+                      },
+                      availableColors: MyTheme.getColorsList(myThemes),
                       layoutBuilder: pickerLayoutBuilder,
                       itemBuilder: pickerItemBuilder,
                     ),
@@ -115,19 +119,13 @@ class _BlockColorPickerWidgetState extends State<BlockColorPickerWidget> {
               },
             );
           },
-          child: const Text(
-            'Change app Theme color',
-            style: TextStyle(
-              color: Colors.black,
+          child: Container(
+            width: 40,
+            height: 40,
+            decoration: BoxDecoration(
+              color: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(20),
             ),
-          ),
-        ),
-        Container(
-          width: 50,
-          height: 50,
-          decoration: BoxDecoration(
-            color: Theme.of(context).primaryColor,
-            borderRadius: BorderRadius.circular(20),
           ),
         ),
       ],

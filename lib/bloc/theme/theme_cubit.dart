@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:flutter/material.dart';
-import '../../models/theme_data.dart' as themedata_model;
+import '../../models/theme_name.dart';
 import '../../services/theme_data_hive_service.dart';
 
 part 'theme_state.dart';
@@ -9,15 +8,21 @@ part 'theme_state.dart';
 class ThemeCubit extends Cubit<ChangeableThemeState> {
   final ThemeDataHiveService themeDataHiveService;
   ThemeCubit(this.themeDataHiveService)
-      : super(ChangeableThemeState(
-          themeData: themeDataHiveService.getThemePrimaryColor(),
-        ));
+      : super(
+          ChangeableThemeState(
+            themeName: themeDataHiveService.getPrimeryTheme(),
+          ),
+        );
 
-  void changeThemePrimaryColor(Color color) {
+  void changeTheme(String themeName) {
+    print('Cubit $themeName');
+    themeDataHiveService.changeTheme(ThemeName(themeName: themeName));
+
     emit(
       state.copyWith(
-        themeData: themedata_model.ThemeData(primaryColor: color),
+        themeName: ThemeName(themeName: themeName),
       ),
     );
+    print('State: ${state.themeName}');
   }
 }

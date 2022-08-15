@@ -2,19 +2,19 @@
 part of 'theme_cubit.dart';
 
 class ChangeableThemeState extends Equatable {
-  final themedata_model.ThemeData? themeData;
+  final ThemeName? themeName;
   const ChangeableThemeState({
-    required this.themeData,
+    required this.themeName,
   });
 
   ChangeableThemeState copyWith({
-    themedata_model.ThemeData? themeData,
+    ThemeName? themeName,
   }) {
     return ChangeableThemeState(
-      themeData: themeData ?? this.themeData,
+      themeName: themeName ?? this.themeName,
     );
   }
 
   @override
-  List<Object?> get props => [];
+  List<Object?> get props => [themeName];
 }

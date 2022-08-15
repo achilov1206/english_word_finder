@@ -1,22 +1,30 @@
 import 'package:hive/hive.dart';
 
-import '../models/theme_data.dart' as themedata_model;
+import '../models/theme_name.dart';
 
 class ThemeDataHiveService {
-  static const String dbKey = 'themePrimaryColor';
-  late Box<themedata_model.ThemeData> _themeData;
+  static const String dbKey = 'themeName';
+  final Box<ThemeName> _themeData = Hive.box<ThemeName>('themedataname');
   ThemeDataHiveService() {
     init();
   }
   Future<void> init() async {
-    _themeData = Hive.box<themedata_model.ThemeData>('themedata');
+    if (_themeData.isEmpty) {
+      ThemeName initialTheme = ThemeName(
+        themeName: 'default',
+      );
+      _themeData.put(dbKey, initialTheme);
+    }
   }
 
-  void changeThemePrimaryColor(themedata_model.ThemeData themeData) {
+  void changeTheme(ThemeName themeData) {
     _themeData.put(dbKey, themeData);
   }
 
-  themedata_model.ThemeData? getThemePrimaryColor() {
-    return _themeData.get(dbKey);
+  ThemeName? getPrimeryTheme() {
+    if (_themeData.containsKey(dbKey)) {
+      return _themeData.get(dbKey);
+    }
+    return ThemeName(themeName: 'default');
   }
 }
