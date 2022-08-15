@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:word_finder/models/custom_error.dart';
+import '../models/custom_error.dart';
 
 import '../models/translation.dart';
 import '../constants.dart';

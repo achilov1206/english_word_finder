@@ -1,15 +1,5 @@
 import 'package:flutter/material.dart';
 
-// ThemeData mainThemeData(Color? color) {
-//   if (color != null) {
-//     return ThemeData(primarySwatch: MaterialColor(color.value, {}));
-//   } else {
-//     return ThemeData(primarySwatch: Colors.purple);
-//   }
-
-//   //return ThemeData(primaryColor: color ?? Colors.purple);
-// }
-
 class MyTheme {
   Brightness brightness;
   MaterialColor primarySwatch;

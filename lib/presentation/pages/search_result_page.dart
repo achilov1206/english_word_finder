@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:word_finder/bloc/translations/translations_bloc.dart';
+import '../../bloc/translations/translations_bloc.dart';
 
 import '../../models/translation.dart';
-import '../../repositories/translation_repository.dart';
 import '../widgets/custom_audio_player.dart';
 import '../widgets/favorite_button.dart';
 import '../widgets/part_of_speech_widget.dart';

@@ -1,6 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:word_finder/repositories/translation_repository.dart';
+import '../../repositories/translation_repository.dart';
 import '../../models/custom_error.dart';
 import '../../models/translation.dart';
 

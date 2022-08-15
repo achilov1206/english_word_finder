@@ -1,6 +1,6 @@
-import 'package:word_finder/models/translation.dart';
-import 'package:word_finder/services/translation_api.dart';
-import 'package:word_finder/services/translation_hive.dart';
+import '../models/translation.dart';
+import '../services/translation_api.dart';
+import '../services/translation_hive.dart';
 
 class TranslationRepository {
   final TranslationApiService translationApiService;

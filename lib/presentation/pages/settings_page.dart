@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:word_finder/bloc/translations/translations_bloc.dart';
+import '../../bloc/translations/translations_bloc.dart';
 
 import '../widgets/block_color_picker.dart';
 

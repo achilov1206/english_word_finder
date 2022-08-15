@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'translation_bloc.dart';
 
 abstract class TranslationEvent extends Equatable {
@@ -16,12 +15,3 @@ class LoadTranslationEvent extends TranslationEvent {
   @override
   List<Object> get props => [wordToTranslate];
 }
-
-// class ToggleTranslationEvent extends TranslationEvent {
-//   final Translation translation;
-//   const ToggleTranslationEvent({
-//     required this.translation,
-//   });
-//   @override
-//   List<Object> get props => [translation];
-// }

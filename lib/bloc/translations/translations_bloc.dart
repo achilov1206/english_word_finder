@@ -52,7 +52,7 @@ class TranslationsBloc extends Bloc<TranslationsEvent, TranslationsState> {
           state.copyWith(translationsStatus: TranslationsStatus.empty),
         );
       } on CustomError catch (e) {
-        print("erorro $e");
+        print("error $e");
       }
     });
   }
