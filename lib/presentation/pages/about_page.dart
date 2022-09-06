@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class AboutPage extends StatelessWidget {
   static const routeName = '/about';
@@ -28,9 +29,9 @@ class AboutPage extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                const Text(
-                  'Find an English word',
-                  style: TextStyle(
+                Text(
+                  AppLocalizations.of(context).findEglishWord,
+                  style: const TextStyle(
                     color: Colors.black,
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -47,10 +48,10 @@ class AboutPage extends StatelessWidget {
                   enabled: false,
                   readOnly: true,
                   initialValue: '1.0.0',
-                  decoration: const InputDecoration(
-                    labelText: 'Version',
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context).version,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                     ),
@@ -60,10 +61,10 @@ class AboutPage extends StatelessWidget {
                   enabled: false,
                   readOnly: true,
                   initialValue: 'achilovo1294@yandex.com',
-                  decoration: const InputDecoration(
-                    labelText: 'Contact Information',
+                  decoration: InputDecoration(
+                    labelText: AppLocalizations.of(context).contactInformation,
                     floatingLabelBehavior: FloatingLabelBehavior.always,
-                    labelStyle: TextStyle(
+                    labelStyle: const TextStyle(
                       color: Colors.grey,
                       fontSize: 16,
                     ),

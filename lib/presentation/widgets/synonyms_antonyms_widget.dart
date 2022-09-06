@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 
 class SynonymsAntonymsWidget extends StatelessWidget {
   final List wordList;
-  const SynonymsAntonymsWidget({Key? key, required this.wordList})
-      : super(key: key);
+  final String label;
+  const SynonymsAntonymsWidget({
+    Key? key,
+    required this.wordList,
+    required this.label,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +21,9 @@ class SynonymsAntonymsWidget extends StatelessWidget {
 
     return Row(
       children: [
-        const Text(
-          'Antonyms: ',
-          style: TextStyle(
+        Text(
+          '$label: ',
+          style: const TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.bold,
           ),

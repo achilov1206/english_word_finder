@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../bloc/translations/translations_bloc.dart';
 
 import '../widgets/block_color_picker.dart';
@@ -12,7 +13,7 @@ class SettingsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Settings'),
+        title: Text(AppLocalizations.of(context).settings),
       ),
       body: Padding(
         padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
@@ -27,9 +28,10 @@ class SettingsPage extends StatelessWidget {
                     context: context,
                     builder: (BuildContext ctx) {
                       return AlertDialog(
-                        title: const Text('Please confirm'),
-                        content: const Text(
-                            'Are you sure you want to delete all saved entries?'),
+                        title: Text(AppLocalizations.of(context).confirm),
+                        content: Text(
+                          AppLocalizations.of(context).confirmDeleteAllMessage,
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () {
@@ -37,25 +39,26 @@ class SettingsPage extends StatelessWidget {
                                   .read<TranslationsBloc>()
                                   .add(RemoveAllTranslations());
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('All saved entries deleted'),
+                                SnackBar(
+                                  content: Text(AppLocalizations.of(context)
+                                      .allDeletedMessage),
                                 ),
                               );
                               Navigator.of(context).pop();
                             },
-                            child: const Text('Yes'),
+                            child: Text(AppLocalizations.of(context).yes),
                           ),
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
-                            child: const Text('No'),
+                            child: Text(AppLocalizations.of(context).no),
                           ),
                         ],
                       );
                     });
               },
-              child: const Text('Delete saved entries'),
+              child: Text(AppLocalizations.of(context).deleteSaved),
             ),
           ],
         ),

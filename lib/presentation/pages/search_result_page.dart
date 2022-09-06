@@ -165,11 +165,13 @@ class SearchResultPage extends StatelessWidget {
                               meaning['synonyms'].isNotEmpty)
                             SynonymsAntonymsWidget(
                               wordList: meaning['synonyms'],
+                              label: 'Synonyms',
                             ),
                           if (meaning['antonyms'] != null &&
                               meaning['antonyms'].isNotEmpty)
                             SynonymsAntonymsWidget(
                               wordList: meaning['antonyms'],
+                              label: 'Antonyms',
                             ),
                         ],
                       ),

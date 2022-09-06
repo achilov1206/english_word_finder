@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../bloc/translations/translations_bloc.dart';
 import '../../models/translation.dart';
 import '../widgets/custom_list_tile.dart';
@@ -17,15 +17,15 @@ class FavoritePage extends StatelessWidget {
         if (state.translationsStatus == TranslationsStatus.loading) {
           return const CircularProgressIndicator();
         } else if (state.translationsStatus == TranslationsStatus.empty) {
-          return const Text('Please serch for some word');
+          return Text(AppLocalizations.of(context).searchSomeWord);
         } else if (state.translationsStatus == TranslationsStatus.error) {
-          return const Text('Something weent wrong, please update page');
+          return Text(AppLocalizations.of(context).errorUpdatePage);
         } else {
           favoriteTranslation = state.translations
               .where((translation) => translation.isFavorite == true)
               .toList();
           if (favoriteTranslation.isEmpty) {
-            return const Text('Favorite List is empty');
+            return Text(AppLocalizations.of(context).favoriteListEmpty);
           }
           return Column(
             children: [

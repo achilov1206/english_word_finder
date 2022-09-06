@@ -1,0 +1,98 @@
+{
+    "appTitle" : "English word finder",
+    "@appTitle" : {
+        "description": "English word finder"
+    },
+    "changeTheme" : "Change app theme",
+    "@changeTheme" : {
+        "description": "Change app theme"
+    },
+    "selectColor" : "Select a color",
+    "@selectColor" : {
+        "description": "Select a color"
+    },
+    "firstSearchTime" : "First search time: ",
+    "@firstSearchTime" : {
+        "description": "First search time: "
+    },
+    "findEglishWord" : "Find an English word",
+    "@findEglishWord" : {
+        "description": "Find an English word"
+    },
+    "version" : "Version",
+    "@version" : {
+        "description": "Version"
+    },
+    "contactInformation" : "Contact Information",
+    "@contactInformation" : {
+        "description": "Contact Information"
+    },
+    "searchSomeWord" : "Please search for some word",
+    "@searchSomeWord" : {
+        "description": "Please search for some word"
+    },
+    "errorUpdatePage" : "Something went wrong, please update page",
+    "@errorUpdatePage" : {
+        "description": "Something went wrong, please update page"
+    },
+    "favoriteListEmpty" : "Favorites list is empty",
+    "@favoriteListEmpty" : {
+        "description": "Favorites list is empty"
+    },
+    "searchEnglishWord" : "Search for English word",
+    "@searchEnglishWord" : {
+        "description": "Search for English word"
+    },
+    "wordNotFound" : "Word not found, please check one more time",
+    "@wordNotFound" : {
+        "description": "Word not found, please check one more time"
+    },
+    "enterWord" : "Enter a word",
+    "@enterWord" : {
+        "description": "Enter a word"
+    },
+    "search" : "Search",
+    "@search" : {
+        "description": "Search"
+    },
+    "settings" : "Settings",
+    "@settings" : {
+        "description": "Settings"
+    },
+    "confirm" : "Please confirm",
+    "@confirm" : {
+        "description": "Settings"
+    },
+    "confirmDeleteAllMessage" : "Are you sure you want to delete all saved entries?",
+    "@confirmDeleteAllMessage" : {
+        "description": "Are you sure you want to delete all saved entries?"
+    },
+    "allDeletedMessage" : "All saved entries deleted",
+    "@allDeletedMessage" : {
+        "description": "All saved entries deleted"
+    },
+    "yes" : "Yes",
+    "@yes" : {
+        "description": "Yes"
+    },
+    "no" : "No",
+    "@no" : {
+        "description": "No"
+    },
+    "deleteSaved" : "Delete saved entries",
+    "@deleteSaved" : {
+        "description": "Delete saved entries"
+    },
+    "about" : "About",
+    "@about" : {
+        "description": "about"
+    },
+    "favourite" : "Favourite",
+    "@favourite" : {
+        "description": "Favourite"
+    },
+    "searchHistory" : "Search History",
+    "@about" : {
+        "searchHistory": "Search History"
+    }
+}   

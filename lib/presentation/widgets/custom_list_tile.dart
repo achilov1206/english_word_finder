@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../helpers/datetime_helper.dart';
 import '../../models/translation.dart';
@@ -25,7 +26,7 @@ class CustomListTile extends StatelessWidget {
         subtitle: Center(
           child: RichText(
             text: TextSpan(
-              text: 'First search time: ',
+              text: AppLocalizations.of(context).firstSearchTime,
               style: const TextStyle(
                 color: Colors.black,
                 fontWeight: FontWeight.bold,

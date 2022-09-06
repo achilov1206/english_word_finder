@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:path_provider/path_provider.dart' as path_provider;
-import './services/theme_data_hive_service.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
+import './services/theme_data_hive_service.dart';
 import './bloc/translation/translation_bloc.dart';
 import './bloc/translations/translations_bloc.dart';
 import './bloc/theme/theme_cubit.dart';
@@ -13,16 +16,19 @@ import './services/translation_hive.dart';
 import './models/translation.dart';
 import './repositories/translation_repository.dart';
 import './theme/main_theme.dart';
-
-import 'models/theme_name.dart';
-
+import './models/theme_name.dart';
 import './presentation/pages/app_page.dart';
 import './presentation/pages/search_result_page.dart';
 import './presentation/pages/settings_page.dart';
 import './presentation/pages/about_page.dart';
+import './l10n/l10n.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   final appDocumentDirectory =
       await path_provider.getApplicationDocumentsDirectory();
@@ -74,6 +80,13 @@ class MyApp extends StatelessWidget {
           builder: (context, state) {
             return MaterialApp(
               debugShowCheckedModeBanner: false,
+              supportedLocales: L10n.all,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+              ],
               title: 'English word finder',
               theme:
                   MyTheme.buildThemeData(myThemes[state.themeName!.themeName]!),

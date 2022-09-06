@@ -4,7 +4,7 @@
    <uses-permission android:name="android.permission.INTERNET" />
 
    <application
-        android:label="Dictionary"
+        android:label="English Dictionary"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

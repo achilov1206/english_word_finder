@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import './search_page.dart';
 import './favorite_page.dart';
@@ -17,26 +18,27 @@ class _AppPageState extends State<AppPage> {
   int _selectedIndex = 0;
   String? _title;
 
-  static List<Widget> _pages = [
-    SearchPage(),
-    FavoritePage(),
-    HistoryPage(),
+  static List<Widget> pages = [
+    const SearchPage(),
+    const FavoritePage(),
+    const HistoryPage(),
   ];
-  static const List<String> _titles = [
-    'Search',
-    'Favourite',
-    'Search History',
-  ];
-
-  void _onNavigationTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-      _title = _titles[index];
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
+    List<String> titles = [
+      AppLocalizations.of(context).search,
+      AppLocalizations.of(context).favourite,
+      AppLocalizations.of(context).searchHistory,
+    ];
+
+    void _onNavigationTapped(int index) {
+      setState(() {
+        _selectedIndex = index;
+        _title = titles[index];
+      });
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: Text(_title ?? 'Search'),
@@ -50,14 +52,14 @@ class _AppPageState extends State<AppPage> {
               }
             },
             itemBuilder: (BuildContext context) {
-              return const [
+              return [
                 PopupMenuItem<int>(
                   value: 0,
-                  child: Text("Settings"),
+                  child: Text(AppLocalizations.of(context).settings),
                 ),
                 PopupMenuItem<int>(
                   value: 1,
-                  child: Text("About"),
+                  child: Text(AppLocalizations.of(context).about),
                 ),
               ];
             },
@@ -73,21 +75,21 @@ class _AppPageState extends State<AppPage> {
               Icons.search,
               size: 30,
             ),
-            label: _titles[0],
+            label: titles[0],
           ),
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.favorite,
               size: 30,
             ),
-            label: _titles[1],
+            label: titles[1],
           ),
           BottomNavigationBarItem(
             icon: const Icon(
               Icons.history,
               size: 30,
             ),
-            label: _titles[2],
+            label: titles[2],
           ),
         ],
         currentIndex: _selectedIndex,
@@ -97,7 +99,7 @@ class _AppPageState extends State<AppPage> {
         child: SingleChildScrollView(
           child: Padding(
             padding: const EdgeInsets.all(10),
-            child: _pages.elementAt(_selectedIndex),
+            child: pages.elementAt(_selectedIndex),
           ),
         ),
       ),

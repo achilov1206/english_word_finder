@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 import '../../bloc/theme/theme_cubit.dart';
 
@@ -87,9 +88,9 @@ class _BlockColorPickerWidgetState extends State<BlockColorPickerWidget> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        const Text(
-          'Change app Theme color',
-          style: TextStyle(
+        Text(
+          AppLocalizations.of(context).changeTheme,
+          style: const TextStyle(
             color: Colors.black,
           ),
         ),
@@ -99,13 +100,11 @@ class _BlockColorPickerWidgetState extends State<BlockColorPickerWidget> {
               context: context,
               builder: (BuildContext context) {
                 return AlertDialog(
-                  title: const Text('Select a color'),
+                  title: Text(AppLocalizations.of(context).selectColor),
                   content: SingleChildScrollView(
                     child: BlockPicker(
                       pickerColor: Theme.of(context).primaryColor,
                       onColorChanged: (color) {
-                        print(color);
-                        print(MyTheme.colorToThemeName(color));
                         context.read<ThemeCubit>().changeTheme(
                               MyTheme.colorToThemeName(color),
                             );

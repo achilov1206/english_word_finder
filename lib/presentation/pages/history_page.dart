@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../bloc/translations/translations_bloc.dart';
 import '../widgets/custom_list_tile.dart';
 
@@ -14,11 +15,11 @@ class HistoryPage extends StatelessWidget {
       builder: (context, state) {
         context.read<TranslationsBloc>().add(LoadTranslationsEvent());
         if (state.translationsStatus == TranslationsStatus.empty) {
-          return const Text('Please serch for some word');
+          return Text(AppLocalizations.of(context).searchSomeWord);
         } else if (state.translationsStatus == TranslationsStatus.loading) {
           return const CircularProgressIndicator();
         } else if (state.translationsStatus == TranslationsStatus.error) {
-          return const Text('Smething weent wrong, please update page');
+          return Text(AppLocalizations.of(context).errorUpdatePage);
         } else {
           return Column(
             children: [

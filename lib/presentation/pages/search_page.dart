@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../../bloc/translation/translation_bloc.dart';
 
 import './search_result_page.dart';
@@ -20,6 +21,7 @@ class _SearchPageState extends State<SearchPage> {
     return BlocConsumer<TranslationBloc, TranslationState>(
       listener: (context, state) {
         if (state.translationStatus == TranslationStatus.loaded) {
+          isWordFound = true;
           Navigator.of(context).pushNamed(
             SearchResultPage.routeName,
             arguments: state.translation,
@@ -35,20 +37,20 @@ class _SearchPageState extends State<SearchPage> {
         return Form(
           child: Column(
             children: [
-              const Text(
-                'Search for any English word',
-                style: TextStyle(
+              Text(
+                AppLocalizations.of(context).searchEnglishWord,
+                style: const TextStyle(
                   color: Colors.black,
                   fontSize: 20,
                 ),
               ),
               Visibility(
                 visible: !isWordFound,
-                child: const Padding(
-                  padding: EdgeInsets.only(top: 20),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 20),
                   child: Text(
-                    'Word not found, Please check',
-                    style: TextStyle(
+                    AppLocalizations.of(context).wordNotFound,
+                    style: const TextStyle(
                       color: Colors.red,
                     ),
                   ),
@@ -59,7 +61,7 @@ class _SearchPageState extends State<SearchPage> {
                 controller: _wordController,
                 autofocus: true,
                 decoration: InputDecoration(
-                  hintText: 'Enter any word ',
+                  hintText: AppLocalizations.of(context).enterWord,
                   fillColor: Colors.grey[300],
                   filled: true,
                   border: OutlineInputBorder(
@@ -78,14 +80,14 @@ class _SearchPageState extends State<SearchPage> {
                     FocusScope.of(context).requestFocus(FocusNode());
                     context.read<TranslationBloc>().add(
                           LoadTranslationEvent(
-                            wordToTranslate: _wordController.text,
+                            wordToTranslate: _wordController.text.trim(),
                           ),
                         );
                   }
                 },
-                child: const Text(
-                  'Search',
-                  style: TextStyle(fontSize: 20),
+                child: Text(
+                  AppLocalizations.of(context).search,
+                  style: const TextStyle(fontSize: 20),
                 ),
               ),
             ],

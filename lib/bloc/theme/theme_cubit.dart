@@ -15,14 +15,11 @@ class ThemeCubit extends Cubit<ChangeableThemeState> {
         );
 
   void changeTheme(String themeName) {
-    print('Cubit $themeName');
     themeDataHiveService.changeTheme(ThemeName(themeName: themeName));
-
     emit(
       state.copyWith(
         themeName: ThemeName(themeName: themeName),
       ),
     );
-    print('State: ${state.themeName}');
   }
 }
